@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDI 2025 - Bárbara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8">
+            <a href="index.html" class="inline-flex items-center text-pink-600 hover:text-pink-800 mb-4 font-semibold">
+                ← Voltar ao Setor SAÚDE
+            </a>
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center text-white text-4xl shadow-lg">
+                            👤
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-bold text-slate-800">Bárbara</h1>
+                            <p class="text-lg text-slate-600">Atendente • Setor SAÚDE</p>
+                            <p class="text-sm text-slate-500">Plano de Desenvolvimento Individual 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPIs Resumo -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Total de Vendas</span>
+                    <span class="text-2xl">📊</span>
+                </div>
+                <div class="text-3xl font-bold text-blue-600">25</div>
+                <div class="text-xs text-slate-500 mt-1">vendas no ano</div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Prêmio Total</span>
+                    <span class="text-2xl">💰</span>
+                </div>
+                <div class="text-3xl font-bold text-green-600">R$ 14.909</div>
+                <div class="text-xs text-slate-500 mt-1">acumulado 2025</div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Total de Leads</span>
+                    <span class="text-2xl">🎯</span>
+                </div>
+                <div class="text-3xl font-bold text-purple-600">1.256</div>
+                <div class="text-xs text-slate-500 mt-1">leads trabalhados</div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Conversão</span>
+                    <span class="text-2xl">⚡</span>
+                </div>
+                <div class="text-3xl font-bold text-orange-600">2,0%</div>
+                <div class="text-xs text-slate-500 mt-1">taxa de conversão</div>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Vendas por Mês</h3>
+                <canvas id="vendasChart"></canvas>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Prêmios por Mês</h3>
+                <canvas id="premiosChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Tabela Detalhada -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-6">Desempenho Mensal Detalhado</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-slate-100 border-b-2 border-slate-200">
+                            <th class="text-left p-4 font-bold text-slate-700">Mês</th>
+                            <th class="text-center p-4 font-bold text-slate-700">Vendas</th>
+                            <th class="text-right p-4 font-bold text-slate-700">Prêmio</th>
+                            <th class="text-center p-4 font-bold text-slate-700">Leads</th>
+                            <th class="text-center p-4 font-bold text-slate-700">Conv. %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaDetalhada"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Análise e Insights -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>📈</span> Pontos Fortes
+                </h3>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span>Melhor mês: <strong>Novembro</strong> com 7 vendas e R$ 4.426,20</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span>Boa performance em Janeiro (4 vendas) e Março (4 vendas)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span>Recuperação forte no último trimestre do ano</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>🎯</span> Oportunidades de Melhoria
+                </h3>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                        <span>Trabalhar melhor os leads em Agosto (0 vendas com 0 leads)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                        <span>Aumentar conversão: taxa atual de 2,0% pode melhorar</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                        <span>Buscar consistência: evitar meses sem vendas</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Metas 2026 -->
+        <div class="bg-gradient-to-r from-pink-600 to-pink-700 rounded-xl shadow-xl p-8 text-white mb-8">
+            <h3 class="text-2xl font-bold mb-6">🎯 Metas Sugeridas para 2026</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur">
+                    <div class="text-3xl font-bold mb-2">40+</div>
+                    <div class="text-sm">Vendas no ano (+60%)</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur">
+                    <div class="text-3xl font-bold mb-2">3,5%</div>
+                    <div class="text-sm">Taxa de conversão (+75%)</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur">
+                    <div class="text-3xl font-bold mb-2">R$ 25k+</div>
+                    <div class="text-sm">Prêmio total (+68%)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-slate-500 text-sm pb-8">
+            <p>© 2025 - Sistema de Avaliação de Desempenho - Setor SAÚDE</p>
+        </div>
+    </div>
+
+    <script>
+        const dados = [
+            { mes: 'Jan', vendas: 4, premio: 2105.46, leads: 87 },
+            { mes: 'Fev', vendas: 2, premio: 1364.00, leads: 127 },
+            { mes: 'Mar', vendas: 4, premio: 1066.30, leads: 107 },
+            { mes: 'Abr', vendas: 2, premio: 1000.00, leads: 79 },
+            { mes: 'Mai', vendas: 3, premio: 2416.79, leads: 50 },
+            { mes: 'Jun', vendas: 1, premio: 1548.40, leads: 74 },
+            { mes: 'Jul', vendas: 1, premio: 141.22, leads: 80 },
+            { mes: 'Ago', vendas: 0, premio: 0, leads: 0 },
+            { mes: 'Set', vendas: 0, premio: 0, leads: 134 },
+            { mes: 'Out', vendas: 1, premio: 840.87, leads: 191 },
+            { mes: 'Nov', vendas: 7, premio: 4426.20, leads: 213 },
+            { mes: 'Dez', vendas: 0, premio: 0, leads: 114 }
+        ];
+
+        // Gráfico de Vendas
+        const ctxVendas = document.getElementById('vendasChart').getContext('2d');
+        new Chart(ctxVendas, {
+            type: 'bar',
+            data: {
+                labels: dados.map(d => d.mes),
+                datasets: [{
+                    label: 'Vendas',
+                    data: dados.map(d => d.vendas),
+                    backgroundColor: 'rgba(219, 39, 119, 0.7)',
+                    borderColor: 'rgba(219, 39, 119, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                }
+            }
+        });
+
+        // Gráfico de Prêmios
+        const ctxPremios = document.getElementById('premiosChart').getContext('2d');
+        new Chart(ctxPremios, {
+            type: 'line',
+            data: {
+                labels: dados.map(d => d.mes),
+                datasets: [{
+                    label: 'Prêmio (R$)',
+                    data: dados.map(d => d.premio),
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Preencher tabela
+        const tbody = document.getElementById('tabelaDetalhada');
+        dados.forEach(d => {
+            const conv = d.leads > 0 ? ((d.vendas / d.leads) * 100).toFixed(1) : '0.0';
+            const row = `
+                <tr class="border-b border-slate-100 hover:bg-slate-50">
+                    <td class="p-4 font-semibold text-slate-700">${d.mes}/25</td>
+                    <td class="p-4 text-center text-blue-600 font-bold">${d.vendas}</td>
+                    <td class="p-4 text-right text-green-600 font-bold">R$ ${d.premio.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+                    <td class="p-4 text-center text-purple-600 font-bold">${d.leads}</td>
+                    <td class="p-4 text-center text-orange-600 font-bold">${conv}%</td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    </script>
+</body>
+</html>
