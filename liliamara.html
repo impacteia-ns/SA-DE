@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDI 2025 - Liliamara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-emerald-100 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8">
+            <a href="index.html" class="inline-flex items-center text-emerald-600 hover:text-emerald-800 mb-4 font-semibold">
+                ← Voltar ao Setor SAÚDE
+            </a>
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-4xl shadow-lg">
+                            👤
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-bold text-slate-800">Liliamara</h1>
+                            <p class="text-lg text-slate-600">Atendente • Setor SAÚDE</p>
+                            <p class="text-sm text-slate-500">Plano de Desenvolvimento Individual 2025</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl px-6 py-3 shadow-lg">
+                        <div class="text-white text-sm font-semibold">⭐ TOP PERFORMER</div>
+                        <div class="text-white text-xs">Maior número de vendas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPIs Resumo -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Total de Vendas</span>
+                    <span class="text-2xl">📊</span>
+                </div>
+                <div class="text-3xl font-bold text-blue-600">89</div>
+                <div class="text-xs text-slate-500 mt-1">vendas no ano (1º lugar)</div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Prêmio Total</span>
+                    <span class="text-2xl">💰</span>
+                </div>
+                <div class="text-3xl font-bold text-green-600">R$ 51.087</div>
+                <div class="text-xs text-slate-500 mt-1">acumulado 2025 (1º lugar)</div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Total de Leads</span>
+                    <span class="text-2xl">🎯</span>
+                </div>
+                <div class="text-3xl font-bold text-purple-600">1.941</div>
+                <div class="text-xs text-slate-500 mt-1">leads trabalhados</div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-600 text-sm font-semibold">Conversão</span>
+                    <span class="text-2xl">⚡</span>
+                </div>
+                <div class="text-3xl font-bold text-orange-600">4,6%</div>
+                <div class="text-xs text-slate-500 mt-1">taxa de conversão</div>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Vendas por Mês</h3>
+                <canvas id="vendasChart"></canvas>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Prêmios por Mês</h3>
+                <canvas id="premiosChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Tabela Detalhada -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-6">Desempenho Mensal Detalhado</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-slate-100 border-b-2 border-slate-200">
+                            <th class="text-left p-4 font-bold text-slate-700">Mês</th>
+                            <th class="text-center p-4 font-bold text-slate-700">Vendas</th>
+                            <th class="text-right p-4 font-bold text-slate-700">Prêmio</th>
+                            <th class="text-center p-4 font-bold text-slate-700">Leads</th>
+                            <th class="text-center p-4 font-bold text-slate-700">Conv. %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaDetalhada"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Análise e Insights -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>📈</span> Pontos Fortes
+                </h3>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span><strong>Consistência excepcional:</strong> Vendas todos os meses do ano!</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span>Melhor mês: <strong>Outubro</strong> com 12 vendas e R$ 6.650,00</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span>Performance destacada: Julho (12 vendas) e Outubro (12 vendas)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                        <span>Taxa de conversão sólida de 4,6% - acima da média</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">✓</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>🎯</span> Oportunidades de Melhoria
+                </h3>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                        <span>Manter o ritmo de vendas nos meses mais fracos (Março, Novembro)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                        <span>Otimizar ticket médio: alguns meses com muitas vendas mas prêmio menor</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                        <span>Expandir conversão de 4,6% para 5,5%+ através de técnicas avançadas</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-600 font-bold">→</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Metas 2026 -->
+        <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl shadow-xl p-8 text-white mb-8">
+            <h3 class="text-2xl font-bold mb-6">🎯 Metas Sugeridas para 2026</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur">
+                    <div class="text-3xl font-bold mb-2">100+</div>
+                    <div class="text-sm">Vendas no ano (+12%)</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur">
+                    <div class="text-3xl font-bold mb-2">5,5%</div>
+                    <div class="text-sm">Taxa de conversão (+20%)</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur">
+                    <div class="text-3xl font-bold mb-2">R$ 60k+</div>
+                    <div class="text-sm">Prêmio total (+17%)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-slate-500 text-sm pb-8">
+            <p>© 2025 - Sistema de Avaliação de Desempenho - Setor SAÚDE</p>
+        </div>
+    </div>
+
+    <script>
+        const dados = [
+            { mes: 'Jan', vendas: 7, premio: 3907.81, leads: 202 },
+            { mes: 'Fev', vendas: 5, premio: 4552.23, leads: 149 },
+            { mes: 'Mar', vendas: 5, premio: 1538.41, leads: 102 },
+            { mes: 'Abr', vendas: 6, premio: 3880.79, leads: 144 },
+            { mes: 'Mai', vendas: 4, premio: 2702.11, leads: 138 },
+            { mes: 'Jun', vendas: 10, premio: 3743.55, leads: 148 },
+            { mes: 'Jul', vendas: 12, premio: 3918.39, leads: 181 },
+            { mes: 'Ago', vendas: 8, premio: 3390.93, leads: 173 },
+            { mes: 'Set', vendas: 8, premio: 9125.09, leads: 289 },
+            { mes: 'Out', vendas: 12, premio: 6650.00, leads: 197 },
+            { mes: 'Nov', vendas: 5, premio: 3435.79, leads: 87 },
+            { mes: 'Dez', vendas: 7, premio: 4241.51, leads: 131 }
+        ];
+
+        // Gráfico de Vendas
+        const ctxVendas = document.getElementById('vendasChart').getContext('2d');
+        new Chart(ctxVendas, {
+            type: 'bar',
+            data: {
+                labels: dados.map(d => d.mes),
+                datasets: [{
+                    label: 'Vendas',
+                    data: dados.map(d => d.vendas),
+                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 2 } }
+                }
+            }
+        });
+
+        // Gráfico de Prêmios
+        const ctxPremios = document.getElementById('premiosChart').getContext('2d');
+        new Chart(ctxPremios, {
+            type: 'line',
+            data: {
+                labels: dados.map(d => d.mes),
+                datasets: [{
+                    label: 'Prêmio (R$)',
+                    data: dados.map(d => d.premio),
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Preencher tabela
+        const tbody = document.getElementById('tabelaDetalhada');
+        dados.forEach(d => {
+            const conv = d.leads > 0 ? ((d.vendas / d.leads) * 100).toFixed(1) : '0.0';
+            const row = `
+                <tr class="border-b border-slate-100 hover:bg-slate-50">
+                    <td class="p-4 font-semibold text-slate-700">${d.mes}/25</td>
+                    <td class="p-4 text-center text-blue-600 font-bold">${d.vendas}</td>
+                    <td class="p-4 text-right text-green-600 font-bold">R$ ${d.premio.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+                    <td class="p-4 text-center text-purple-600 font-bold">${d.leads}</td>
+                    <td class="p-4 text-center text-orange-600 font-bold">${conv}%</td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    </script>
+</body>
+</html>
